@@ -1,0 +1,52 @@
+:hivemq-link: https://www.hivemq.com
+:hivemq-kafka-docs: {hivemq-link}/docs/kafka/latest/enterprise-extension-for-kafka/kafka.html
+:hivemq-kafka-customization-docs: {hivemq-link}/docs/kafka/latest/enterprise-extension-for-kafka/kafka-customization.html
+:hivemq-blog-tools: {hivemq-link}/mqtt-toolbox/
+:hivemq-support: https://community.hivemq.com/c/hivemq-extension-sdk/kafka-customization/14
+
+= HiveMQ Kafka Extension Hello World Customization
+
+image:https://img.shields.io/badge/Customization_Type-Demonstration-orange?style=for-the-badge[Extension Type]
+image:https://img.shields.io/github/v/release/hivemq/hivemq-kafka-hello-world-customization?style=for-the-badge[GitHub release (latest by date),link=https://github.com/hivemq/hivemq-kafka-hello-world-customization/releases/latest]
+image:https://img.shields.io/github/license/hivemq/hivemq-kafka-hello-world-customization?style=for-the-badge&color=brightgreen[GitHub,link=LICENSE]
+
+== Purpose
+
+This Hello World customization uses a Mqtt-to-Kafka transformer which forwards MQTT PUBLISHES to a Kafka cluster.
+It maps the MQTT topic structure to a matching Kafka topic structure and preserves MQTT 5 user properties as Kafka record headers.
+
+We strongly recommend reading the {hivemq-kafka-docs}[HiveMQ Enterprise Extension for Kafka Documentation]
+to grasp the core concepts of HiveMQ Kafka customization development.
+
+== Installation
+
+. Clone this repository into a Java 11 gradle project.
+. Run `./gradlew jar` task from gradle to build the customization.
+. Move the file: "build/libs/hivemq-kafka-hello-world-customization-4.39.0.jar" to the directory: "HIVEMQ_HOME/extensions/hivemq-kafka-extension/customizations"
+. Copy the resources/kafka-configuration.xml to "HIVEMQ_HOME/extensions/hivemq-kafka-extension" and adapt it to your environment.
+. Delete the "HIVEMQ_HOME/extensions/hivemq-kafka-extension/DISABLED" file.
+. Start HiveMQ.
+
+== First Steps
+
+=== Manual Testing
+
+Connect with an {hivemq-blog-tools}[MQTT client] of your choice.
+Publish a MQTT message to the topic _transform/customization_.
+Monitor your Kafka cluster for a record from topic _transform.customization_.
+
+== Next Steps
+
+Awesome, you got your first HiveMQ Kafka customization working.
+
+Now read the {hivemq-kafka-customization-docs}[HiveMQ Kafka Extension Customization Documentation] to see what customizations can do.
+
+== Need Help?
+
+If you encounter any problems, we are happy to help.
+The best place to get in contact is our {hivemq-support}[community forum].
+
+== License
+
+HiveMQ Kafka Extension Hello World Customization is licensed under the `APACHE LICENSE, VERSION 2.0`.
+A copy of the license can be found link:LICENSE[here].
